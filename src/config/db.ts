@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const connectDB = async () => {
   const maxRetries = 5;
@@ -8,13 +8,13 @@ const connectDB = async () => {
   while (attempts < maxRetries) {
     try {
       await mongoose.connect(process.env.MONGO_URI!);
-      console.log("MongoDB connected!");
+      console.log('MongoDB connected!');
       return;
     } catch (error) {
       attempts++;
       console.error(`MongoDB connection error (attempt ${attempts}): `, error);
       if (attempts >= maxRetries) {
-        console.error("Max retries reached. Exiting...");
+        console.error('Max retries reached. Exiting...');
         process.exit(1);
       }
       console.log(`Retrying in ${retryDelay / 1000} seconds...`);

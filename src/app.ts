@@ -1,13 +1,13 @@
-import express from "express";
-import { connectDB } from "./config/db";
-import dotenv from "dotenv";
-import { authRoutes } from "./routes/authRoutes";
-import { pingRoutes } from "./routes/pingRoutes";
-import { userRoutes } from "./routes/userRoutes";
+import express from 'express';
+import { connectDB } from './config/db';
+import dotenv from 'dotenv';
+import { authRoutes } from './routes/authRoutes';
+import { pingRoutes } from './routes/pingRoutes';
+import { userRoutes } from './routes/userRoutes';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
-const api = "/api";
+const api = '/api';
 
 connectDB();
 

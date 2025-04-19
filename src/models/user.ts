@@ -1,17 +1,17 @@
-import { CallbackError, model, Model, Schema } from "mongoose";
-import bcrypt from "bcrypt";
+import { CallbackError, model, Model, Schema } from 'mongoose';
+import bcrypt from 'bcrypt';
 
 enum Role {
-  Teacher = "teacher",
-  Student = "student",
+  Teacher = 'teacher',
+  Student = 'student',
 }
 
 interface IUser {
-  firstName: string,
-  lastName: string,
-  username: string,
-  password: string,
-  role: Role
+  firstName: string;
+  lastName: string;
+  username: string;
+  password: string;
+  role: Role;
 }
 
 interface IUserMethods {
@@ -40,14 +40,14 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   },
   role: {
     type: String,
-    enum: ["teacher", "student"],
+    enum: ['teacher', 'student'],
     required: true,
-  }
+  },
 });
 
-userSchema.pre("save", async function (next) {
+userSchema.pre('save', async function (next) {
   // Если пароль не изменен, переходим к следующему middleware
-  if (!this.isModified("password")) return next();
+  if (!this.isModified('password')) return next();
 
   try {
     // Генерация соли
@@ -67,10 +67,10 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.method(
-  "comparePassword",
+  'comparePassword',
   async function (candidatePassword: string) {
     return await bcrypt.compare(candidatePassword, this.password);
-  },
+  }
 );
 
-export const UserModel = model<IUser, UserModel>("User", userSchema);
+export const UserModel = model<IUser, UserModel>('User', userSchema);

@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
 // Расширяем интерфейс Request, чтобы добавить свойство userId
-declare module "express" {
+declare module 'express' {
   interface Request {
     id?: string;
   }
@@ -11,14 +11,14 @@ declare module "express" {
 export const authenticateJWT = async (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   // Получаем токен из заголовка Authorization
-  const token = req.header("Authorization")?.split(" ")[1];
+  const token = req.header('Authorization')?.split(' ')[1];
 
   // Если токен отсутствует, возвращаем ошибку 401
   if (!token) {
-    res.status(401).json({ message: "Access denied. No token provided." });
+    res.status(401).json({ message: 'Access denied. No token provided.' });
   }
 
   try {
@@ -34,6 +34,6 @@ export const authenticateJWT = async (
     next();
   } catch {
     // Если токен невалиден, возвращаем ошибку 400
-    res.status(400).json({ message: "Invalid token." });
+    res.status(400).json({ message: 'Invalid token.' });
   }
 };
