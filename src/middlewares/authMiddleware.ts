@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 // Расширяем интерфейс Request, чтобы добавить свойство userId
 declare module "express" {
   interface Request {
-    userId?: string;
+    id?: string;
   }
 }
 
@@ -24,11 +24,11 @@ export const authenticateJWT = async (
   try {
     // Верифицируем токен
     const decoded = jwt.verify(token!, process.env.JWT_SECRET!) as {
-      userId: string;
+      id: string;
     };
 
-    // Добавляем userId в объект запроса
-    req.userId = decoded.userId;
+    // Добавляем id в объект запроса
+    req.id = decoded.id;
 
     // Переходим к следующему middleware
     next();
