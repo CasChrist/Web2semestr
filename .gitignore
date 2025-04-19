@@ -1,2 +1,26 @@
-/node_modules
-Sozdanie+proekta+Express+++TypeScript.md
+# Node.js
+node_modules/
+
+# Локальные файлы окружения
+.env
+.env.local
+
+# Результаты сборки
+dist/
+build/
+.next/
+.nuxt/
+
+# Лог-файлы
+*.log
+
+# Конфигурации IDE
+.vscode/
+.idea/
+
+# Операционные системы
+.DS_Store
+Thumbs.db
+
+# Кэш и временные файлы
+coverage/
