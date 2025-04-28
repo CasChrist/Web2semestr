@@ -24,3 +24,6 @@ Thumbs.db
 
 # Кэш и временные файлы
 coverage/
+
+# Uploads Directory
+/uploads

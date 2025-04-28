@@ -12,6 +12,7 @@ interface IUser {
   username: string;
   password: string;
   role: Role;
+  favorites?: string[];
 }
 
 interface IUserMethods {
