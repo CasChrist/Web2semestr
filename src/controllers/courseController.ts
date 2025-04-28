@@ -101,6 +101,7 @@ const createCourse = async (req: Request, res: Response): Promise<void> => {
       level = 'beginner',
       published = false,
       author,
+      tags,
     } = req.body;
 
     if (!title || !price || !category || !author) {
@@ -115,6 +116,16 @@ const createCourse = async (req: Request, res: Response): Promise<void> => {
 
     const image = req.file.filename;
 
+    // Parse tags if provided as comma-separated string
+    let parsedTags: string[] | undefined;
+    if (tags) {
+      if (Array.isArray(tags)) {
+        parsedTags = tags;
+      } else if (typeof tags === 'string') {
+        parsedTags = tags.split(',').map(tag => tag.trim());
+      }
+    }
+
     const newCourse = new CourseModel({
       title,
       description,
@@ -124,6 +135,7 @@ const createCourse = async (req: Request, res: Response): Promise<void> => {
       level,
       published,
       author,
+      tags: parsedTags,
     });
 
     const savedCourse = await newCourse.save();

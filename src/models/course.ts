@@ -13,6 +13,7 @@ interface ICourse {
   level: string;
   published: boolean;
   author: Schema.Types.ObjectId;
+  tags?: string[];
   createdAt: Date;
 }
 
