@@ -91,9 +91,52 @@ const deleteCourseById = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+const createCourse = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const {
+      title,
+      description,
+      price,
+      category,
+      level = 'beginner',
+      published = false,
+      author,
+    } = req.body;
+
+    if (!title || !price || !category || !author) {
+      res.status(400).json({ message: 'Missing required fields' });
+      return;
+    }
+
+    if (!req.file) {
+      res.status(400).json({ message: 'Image file is required' });
+      return;
+    }
+
+    const image = req.file.filename;
+
+    const newCourse = new CourseModel({
+      title,
+      description,
+      price,
+      image,
+      category,
+      level,
+      published,
+      author,
+    });
+
+    const savedCourse = await newCourse.save();
+    res.status(201).json(savedCourse);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to create course', error });
+  }
+};
+
 export const courseController = {
   getAllCourses,
   getCourseById,
+  createCourse,
   updateCourseById,
   deleteCourseById,
 };
