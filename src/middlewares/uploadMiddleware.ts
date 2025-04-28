@@ -1,6 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { processImage } from './imageProcessingMiddleware';
 
 // Define storage for multer to save files to disk
 const storage = multer.diskStorage({
@@ -30,3 +31,9 @@ const fileFilter = (req: Express.Request, file: Express.Multer.File, cb: multer.
 };
 
 export const upload = multer({ storage, fileFilter });
+
+// Middleware chain to handle upload and image processing
+export const uploadAndProcessImage = [
+  upload.single('image'),
+  processImage,
+];
