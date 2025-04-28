@@ -65,6 +65,10 @@ const courseSchema = new Schema<ICourse>({
     required: true,
     default: Date.now,
   },
+  tags: {
+    type: [String],
+    default: [],
+  },
 });
 
 // Pre-save middleware to generate slug from title

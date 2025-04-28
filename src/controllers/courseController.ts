@@ -63,11 +63,27 @@ const getCourseById = async (req: Request, res: Response): Promise<void> => {
 
 const updateCourseById = async (req: Request, res: Response): Promise<void> => {
   try {
+    const {
+      tags,
+      ...updateData
+    } = req.body;
+
+    // Parse tags if provided as comma-separated string
+    let parsedTags: string[] | undefined;
+    if (tags) {
+      if (Array.isArray(tags)) {
+        parsedTags = tags;
+      } else if (typeof tags === 'string') {
+        parsedTags = tags.split(',').map(tag => tag.trim());
+      }
+    }
+
     const updatedCourse = await CourseModel.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { ...updateData, tags: parsedTags },
       { new: true, runValidators: true }
     ).exec();
+
     if (!updatedCourse) {
       res.status(404).json({ message: 'Course not found' });
       return;
