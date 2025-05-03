@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(`${api}/auth`, authRoutes);
 app.use(api, pingRoutes);
 app.use(`${api}/user`, userRoutes);
-app.use(`${api}`, courseRoutes);
+app.use(`${api}/courses`, courseRoutes);
 app.use(`${api}/lessons`, lessonRoutes);
 app.use(`${api}/comments`, commentRoutes);
 
