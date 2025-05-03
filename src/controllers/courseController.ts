@@ -50,7 +50,9 @@ const getAllCourses = async (req: Request, res: Response): Promise<void> => {
 
 const getCourseById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const course = await CourseModel.findById(req.params.id).exec();
+    const course = await CourseModel.findById(req.params.id)
+      .populate('lessons')
+      .exec();
     if (!course) {
       res.status(404).json({ message: 'Course not found' });
       return;

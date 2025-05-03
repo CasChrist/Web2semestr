@@ -79,4 +79,15 @@ courseSchema.pre('validate', function (next) {
   next();
 });
 
+// Virtual field to populate lessons
+courseSchema.virtual('lessons', {
+  ref: 'Lesson',
+  localField: '_id',
+  foreignField: 'course',
+  justOne: false,
+});
+
+courseSchema.set('toObject', { virtuals: true });
+courseSchema.set('toJSON', { virtuals: true });
+
 export const CourseModel = model<ICourse>('Course', courseSchema);
