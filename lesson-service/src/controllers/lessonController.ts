@@ -55,16 +55,12 @@ const getLessonById = async (req: Request, res: Response): Promise<void> => {
 
 const createLesson = async (req: Request, res: Response): Promise<void> => {
   try {
-    const {
-      title,
-      content,
-      videoUrl,
-      course,
-      order,
-    } = req.body;
+    const { title, content, videoUrl, course, order } = req.body;
 
     if (!title || !course) {
-      res.status(400).json({ message: 'Missing required fields: title or course' });
+      res
+        .status(400)
+        .json({ message: 'Missing required fields: title or course' });
       return;
     }
 
@@ -104,7 +100,9 @@ const updateLessonById = async (req: Request, res: Response): Promise<void> => {
 
 const deleteLessonById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const deletedLesson = await LessonModel.findByIdAndDelete(req.params.id).exec();
+    const deletedLesson = await LessonModel.findByIdAndDelete(
+      req.params.id
+    ).exec();
     if (!deletedLesson) {
       res.status(404).json({ message: 'Lesson not found' });
       return;

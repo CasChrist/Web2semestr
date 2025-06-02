@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import { UserModel } from '../../src/models/user';
 
-const addFavoriteCourse = async (req: Request, res: Response): Promise<void> => {
+const addFavoriteCourse = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const userId = req.id;
     const courseId = req.params.courseId;
@@ -22,7 +25,9 @@ const addFavoriteCourse = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
-    user.favorites = user.favorites ? [...user.favorites, courseId] : [courseId];
+    user.favorites = user.favorites
+      ? [...user.favorites, courseId]
+      : [courseId];
     await user.save();
 
     res.status(200).json({ message: 'Course added to favorites' });
@@ -32,7 +37,10 @@ const addFavoriteCourse = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-const removeFavoriteCourse = async (req: Request, res: Response): Promise<void> => {
+const removeFavoriteCourse = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const userId = req.id;
     const courseId = req.params.courseId;
@@ -53,7 +61,7 @@ const removeFavoriteCourse = async (req: Request, res: Response): Promise<void> 
       return;
     }
 
-    user.favorites = user.favorites.filter(fav => fav !== courseId);
+    user.favorites = user.favorites.filter((fav) => fav !== courseId);
     await user.save();
 
     res.status(200).json({ message: 'Course removed from favorites' });
@@ -63,7 +71,10 @@ const removeFavoriteCourse = async (req: Request, res: Response): Promise<void> 
   }
 };
 
-const getFavoriteCourses = async (req: Request, res: Response): Promise<void> => {
+const getFavoriteCourses = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const userId = req.id;
 

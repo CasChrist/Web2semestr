@@ -7,7 +7,10 @@ const processEnrollment = async (msg: any) => {
     const { userId, courseId } = JSON.parse(content);
 
     // Check if enrollment already exists
-    const existingEnrollment = await EnrollmentModel.findOne({ user: userId, course: courseId }).exec();
+    const existingEnrollment = await EnrollmentModel.findOne({
+      user: userId,
+      course: courseId,
+    }).exec();
     if (existingEnrollment) {
       console.log(`User ${userId} already enrolled in course ${courseId}`);
       return;
@@ -21,7 +24,9 @@ const processEnrollment = async (msg: any) => {
     });
 
     await enrollment.save();
-    console.log(`Enrollment processed for user ${userId} in course ${courseId}`);
+    console.log(
+      `Enrollment processed for user ${userId} in course ${courseId}`
+    );
   } catch (error) {
     console.error('Failed to process enrollment:', error);
   }

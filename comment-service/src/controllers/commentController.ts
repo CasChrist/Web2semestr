@@ -54,7 +54,10 @@ const createComment = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-const updateCommentById = async (req: Request, res: Response): Promise<void> => {
+const updateCommentById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const { text } = req.body;
     if (text && text.length > 255) {
@@ -76,9 +79,14 @@ const updateCommentById = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-const deleteCommentById = async (req: Request, res: Response): Promise<void> => {
+const deleteCommentById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
-    const deletedComment = await CommentModel.findByIdAndDelete(req.params.id).exec();
+    const deletedComment = await CommentModel.findByIdAndDelete(
+      req.params.id
+    ).exec();
     if (!deletedComment) {
       res.status(404).json({ message: 'Comment not found' });
       return;

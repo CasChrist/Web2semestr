@@ -18,10 +18,12 @@ const enrollmentSchema = new Schema<IEnrollment>({
     ref: 'Course',
     required: true,
   },
-  completedLessons: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Lesson',
-  }],
+  completedLessons: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Lesson',
+    },
+  ],
   enrolledAt: {
     type: Date,
     default: Date.now,
@@ -30,4 +32,7 @@ const enrollmentSchema = new Schema<IEnrollment>({
 
 enrollmentSchema.index({ user: 1, course: 1 }, { unique: true });
 
-export const EnrollmentModel = model<IEnrollment>('Enrollment', enrollmentSchema);
+export const EnrollmentModel = model<IEnrollment>(
+  'Enrollment',
+  enrollmentSchema
+);

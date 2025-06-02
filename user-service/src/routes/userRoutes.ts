@@ -8,8 +8,20 @@ const router = Router();
 router.get('/myProfile', authenticateJWT, userController.getProfile);
 router.delete('/myProfile', authenticateJWT, userController.deleteUser);
 
-router.post('/favorites/:courseId', authenticateJWT, favoriteController.addFavoriteCourse);
-router.delete('/favorites/:courseId', authenticateJWT, favoriteController.removeFavoriteCourse);
-router.get('/favorites', authenticateJWT, favoriteController.getFavoriteCourses);
+router.post(
+  '/favorites/:courseId',
+  authenticateJWT,
+  favoriteController.addFavoriteCourse
+);
+router.delete(
+  '/favorites/:courseId',
+  authenticateJWT,
+  favoriteController.removeFavoriteCourse
+);
+router.get(
+  '/favorites',
+  authenticateJWT,
+  favoriteController.getFavoriteCourses
+);
 
 export const userRoutes = router;

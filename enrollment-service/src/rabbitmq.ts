@@ -15,9 +15,13 @@ export const publishEnrollment = async (message: object) => {
   if (!channel) {
     throw new Error('RabbitMQ channel is not initialized');
   }
-  channel.sendToQueue('enrollment_queue', Buffer.from(JSON.stringify(message)), {
-    persistent: true,
-  });
+  channel.sendToQueue(
+    'enrollment_queue',
+    Buffer.from(JSON.stringify(message)),
+    {
+      persistent: true,
+    }
+  );
 };
 
 export const consumeEnrollment = async (callback: (msg: any) => void) => {

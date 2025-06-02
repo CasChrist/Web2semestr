@@ -65,10 +65,7 @@ const getCourseById = async (req: Request, res: Response): Promise<void> => {
 
 const updateCourseById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const {
-      tags,
-      ...updateData
-    } = req.body;
+    const { tags, ...updateData } = req.body;
 
     // Parse tags if provided as comma-separated string
     let parsedTags: string[] | undefined;
@@ -76,7 +73,7 @@ const updateCourseById = async (req: Request, res: Response): Promise<void> => {
       if (Array.isArray(tags)) {
         parsedTags = tags;
       } else if (typeof tags === 'string') {
-        parsedTags = tags.split(',').map(tag => tag.trim());
+        parsedTags = tags.split(',').map((tag) => tag.trim());
       }
     }
 
@@ -98,7 +95,9 @@ const updateCourseById = async (req: Request, res: Response): Promise<void> => {
 
 const deleteCourseById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const deletedCourse = await CourseModel.findByIdAndDelete(req.params.id).exec();
+    const deletedCourse = await CourseModel.findByIdAndDelete(
+      req.params.id
+    ).exec();
     if (!deletedCourse) {
       res.status(404).json({ message: 'Course not found' });
       return;
@@ -140,7 +139,7 @@ const createCourse = async (req: Request, res: Response): Promise<void> => {
       if (Array.isArray(tags)) {
         parsedTags = tags;
       } else if (typeof tags === 'string') {
-        parsedTags = tags.split(',').map(tag => tag.trim());
+        parsedTags = tags.split(',').map((tag) => tag.trim());
       }
     }
 
