@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "user-service",
+    "auth-service",
+    "courses-service",
+    "comment-service",
+    "enrollment-service",
+    "lesson-service",
+    "api-gateway"
+  ],
   "scripts": {
     "dev": "nodemon --exec ts-node ./src/app.ts"
   },
