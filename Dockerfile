@@ -1,15 +1,12 @@
-# Dockerfile for API Gateway
-
 FROM node:18-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY ./api-gateway ./
 
-COPY . .
+RUN yarn install
 
-RUN npm run build
+RUN yarn build
 
 EXPOSE 3000
 

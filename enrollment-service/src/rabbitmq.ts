@@ -24,7 +24,7 @@ export const publishEnrollment = async (message: object) => {
   );
 };
 
-export const consumeEnrollment = async (callback: (msg: any) => void) => {
+export const consumeEnrollment = async (callback: (msg: amqp.Message) => void) => {
   if (!channel) {
     throw new Error('RabbitMQ channel is not initialized');
   }

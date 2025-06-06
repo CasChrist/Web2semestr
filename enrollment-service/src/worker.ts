@@ -1,7 +1,8 @@
 import { connectRabbitMQ, consumeEnrollment } from './rabbitmq';
 import { EnrollmentModel } from './models/enrollment';
+import amqp from 'amqplib';
 
-const processEnrollment = async (msg: any) => {
+const processEnrollment = async (msg: amqp.Message) => {
   try {
     const content = msg.content.toString();
     const { userId, courseId } = JSON.parse(content);
