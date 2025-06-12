@@ -1,22 +1,14 @@
 {
-  "name": "testweb",
+  "name": "enrollment-service",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "main": "src/app.ts",
   "private": true,
-  "workspaces": [
-    "user-service",
-    "auth-service",
-    "courses-service",
-    "comment-service",
-    "enrollment-service",
-    "lesson-service",
-    "api-gateway"
-  ],
   "scripts": {
-    "dev": "nodemon --exec ts-node ./src/app.ts"
+    "dev": "nodemon --exec ts-node ./src/app.ts",
+    "build": "tsc"
   },
   "dependencies": {
+    "amqplib": "^0.10.8",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.0",
     "crypto": "^1.0.1",
@@ -31,7 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "@types/amqplib": "^0.10.7",
+    "@types/amqplib": "^0.8.0",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.8",
