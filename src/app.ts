@@ -18,6 +18,9 @@ connectDB();
 const app = express();
 app.use(express.json());
 
+// Serve static files from public directory
+app.use(express.static('public'));
+
 app.use(`${api}/auth`, authRoutes);
 app.use(api, pingRoutes);
 app.use(`${api}/user`, userRoutes);

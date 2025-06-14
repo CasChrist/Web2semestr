@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Interface</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Teacher Interface</h1>
+
+  <section id="courses">
+    <h2>Courses</h2>
+    <div>
+      <button onclick="getAllCourses()">Get All Courses</button>
+      <pre id="courses-list"></pre>
+    </div>
+    <div>
+      <h3>Get Course By ID</h3>
+      <label>Course ID: <input type="text" id="course-id" /></label>
+      <button onclick="getCourseById()">Get Course</button>
+      <pre id="course-result"></pre>
+    </div>
+    <div>
+      <h3>Create Course</h3>
+      <label>Title: <input type="text" id="create-course-title" /></label>
+      <label>Description: <textarea id="create-course-description"></textarea></label>
+      <label>Image: <input type="file" id="create-course-image" /></label>
+      <button onclick="createCourse()">Create Course</button>
+      <pre id="create-course-result"></pre>
+    </div>
+    <div>
+      <h3>Update Course</h3>
+      <label>Course ID: <input type="text" id="update-course-id" /></label>
+      <label>Title: <input type="text" id="update-course-title" /></label>
+      <label>Description: <textarea id="update-course-description"></textarea></label>
+      <button onclick="updateCourse()">Update Course</button>
+      <pre id="update-course-result"></pre>
+    </div>
+    <div>
+      <h3>Delete Course</h3>
+      <label>Course ID: <input type="text" id="delete-course-id" /></label>
+      <button onclick="deleteCourse()">Delete Course</button>
+      <pre id="delete-course-result"></pre>
+    </div>
+  </section>
+
+  <section id="enrollments">
+    <h2>Enrollments</h2>
+    <div>
+      <h3>Enroll User</h3>
+      <label>User ID: <input type="text" id="enroll-user-id" /></label>
+      <label>Course ID: <input type="text" id="enroll-course-id" /></label>
+      <button onclick="enrollUser()">Enroll</button>
+      <pre id="enroll-result"></pre>
+    </div>
+    <div>
+      <h3>Get Enrollment Progress</h3>
+      <label>User ID: <input type="text" id="progress-user-id" /></label>
+      <label>Course ID: <input type="text" id="progress-course-id" /></label>
+      <button onclick="getEnrollmentProgress()">Get Progress</button>
+      <pre id="progress-result"></pre>
+    </div>
+    <div>
+      <h3>Cancel Lesson Completion</h3>
+      <label>User ID: <input type="text" id="cancel-user-id" /></label>
+      <label>Lesson ID: <input type="text" id="cancel-lesson-id" /></label>
+      <button onclick="cancelLesson()">Cancel Completion</button>
+      <pre id="cancel-result"></pre>
+    </div>
+    <div>
+      <h3>Get Enrolled Students Count</h3>
+      <label>Course ID: <input type="text" id="students-count-course-id" /></label>
+      <button onclick="getStudentsCount()">Get Count</button>
+      <pre id="students-count-result"></pre>
+    </div>
+  </section>
+
+  <section id="favorites">
+    <h2>Favorite Courses</h2>
+    <div>
+      <button onclick="getFavoriteCourses()">Get Favorite Courses</button>
+      <pre id="favorite-courses-list"></pre>
+    </div>
+    <div>
+      <h3>Add Favorite Course</h3>
+      <label>Course ID: <input type="text" id="add-favorite-course-id" /></label>
+      <button onclick="addFavoriteCourse()">Add Favorite</button>
+      <pre id="add-favorite-result"></pre>
+    </div>
+    <div>
+      <h3>Remove Favorite Course</h3>
+      <label>Course ID: <input type="text" id="remove-favorite-course-id" /></label>
+      <button onclick="removeFavoriteCourse()">Remove Favorite</button>
+      <pre id="remove-favorite-result"></pre>
+    </div>
+  </section>
+
+  <section id="lessons">
+    <h2>Lessons</h2>
+    <div>
+      <button onclick="getAllLessons()">Get All Lessons</button>
+      <pre id="lessons-list"></pre>
+    </div>
+    <div>
+      <h3>Get Lesson By ID</h3>
+      <label>Lesson ID: <input type="text" id="lesson-id" /></label>
+      <button onclick="getLessonById()">Get Lesson</button>
+      <pre id="lesson-result"></pre>
+    </div>
+    <div>
+      <h3>Create Lesson</h3>
+      <label>Title: <input type="text" id="create-lesson-title" /></label>
+      <label>Description: <textarea id="create-lesson-description"></textarea></label>
+      <button onclick="createLesson()">Create Lesson</button>
+      <pre id="create-lesson-result"></pre>
+    </div>
+    <div>
+      <h3>Update Lesson</h3>
+      <label>Lesson ID: <input type="text" id="update-lesson-id" /></label>
+      <label>Title: <input type="text" id="update-lesson-title" /></label>
+      <label>Description: <textarea id="update-lesson-description"></textarea></label>
+      <button onclick="updateLesson()">Update Lesson</button>
+      <pre id="update-lesson-result"></pre>
+    </div>
+    <div>
+      <h3>Delete Lesson</h3>
+      <label>Lesson ID: <input type="text" id="delete-lesson-id" /></label>
+      <button onclick="deleteLesson()">Delete Lesson</button>
+      <pre id="delete-lesson-result"></pre>
+    </div>
+  </section>
+
+  <section id="user">
+    <h2>User Profile</h2>
+    <div>
+      <button onclick="getProfile()">Get Profile</button>
+      <pre id="profile-result"></pre>
+    </div>
+    <div>
+      <h3>Delete User</h3>
+      <button onclick="deleteUser()">Delete User</button>
+      <pre id="delete-user-result"></pre>
+    </div>
+  </section>
+
+  <script src="teacher-scripts.js"></script>
+</body>
+</html>
