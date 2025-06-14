@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API Frontend</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>API Frontend Interface</h1>
+
+  <section id="auth">
+    <h2>Auth</h2>
+    <div id="signup-div">
+      <h3>Sign Up</h3>
+      <label>First Name: <input type="text" id="signup-firstName" /></label>
+      <label>Last Name: <input type="text" id="signup-lastName" /></label>
+      <label>Username: <input type="text" id="signup-username" /></label>
+      <label>Password: <input type="password" id="signup-password" /></label>
+      <label>Role: 
+        <select id="signup-role">
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+      </label>
+      <button onclick="signup()">Sign Up</button>
+      <pre id="signup-result"></pre>
+    </div>
+    <div id="signin-div">
+      <h3>Sign In</h3>
+      <label>Username: <input type="text" id="signin-username" /></label>
+      <label>Password: <input type="password" id="signin-password" /></label>
+      <button onclick="signin()">Sign In</button>
+      <pre id="signin-result"></pre>
+    </div>
+  </section>
+
+  <script src="index-scripts.js"></script>
+</body>
+</html>
