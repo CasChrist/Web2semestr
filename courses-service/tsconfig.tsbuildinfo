@@ -1,1 +1,0 @@
-{"root":["./src/app.ts","./src/config/db.ts","./src/controllers/coursecontroller.ts","./src/middlewares/imageprocessingmiddleware.ts","./src/middlewares/uploadmiddleware.ts","./src/models/course.ts","./src/routes/courseroutes.ts"],"version":"5.8.3"}

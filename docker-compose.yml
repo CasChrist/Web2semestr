@@ -1,4 +1,26 @@
+version: '3.8'
+
 services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
   api-gateway:
     build:
       context: .
@@ -25,7 +47,7 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
     depends_on:
       - mongo
 
@@ -39,7 +61,7 @@ services:
       - "3002:3002"
     environment:
       - PORT=3002
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
     depends_on:
       - mongo
 
@@ -53,7 +75,7 @@ services:
       - "3003:3003"
     environment:
       - PORT=3003
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
       - JWT_SECRET=your_jwt_secret
     depends_on:
       - mongo
@@ -68,7 +90,7 @@ services:
       - "3005:3005"
     environment:
       - PORT=3005
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
     depends_on:
       - mongo
 
@@ -82,7 +104,7 @@ services:
       - "3004:3004"
     environment:
       - PORT=3004
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
       - RABBITMQ_URL=amqp://rabbitmq
     depends_on:
       - mongo
@@ -98,29 +120,9 @@ services:
       - "3006:3006"
     environment:
       - PORT=3006
-      - MONGO_URI=mongodb://mongo:27017/yourdb
+      - MONGO_URL=mongodb://mongo:27017/yourdb
     depends_on:
       - mongo
-
-  mongo:
-    image: mongo:6.0
-    container_name: mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
-  rabbitmq:
-    image: rabbitmq:3-management
-    container_name: rabbitmq
-    restart: always
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
 
 volumes:
   mongo-data:

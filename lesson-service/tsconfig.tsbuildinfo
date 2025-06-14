@@ -1,1 +1,0 @@
-{"root":["./src/app.ts","./src/config/db.ts","./src/controllers/lessoncontroller.ts","./src/models/lesson.ts","./src/routes/lessonroutes.ts"],"version":"5.8.3"}
